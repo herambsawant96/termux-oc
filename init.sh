@@ -16,27 +16,12 @@ pkg update -y
 pkg upgrade -y
 pkg install -y proot-distro curl wget git
 
-# 2. Setup Android storage
-echo "[2/7] Setting up Android storage..."
+# 2 Registering phone storage
+echo "[2/7] Requesting Android storage permission..."
 
-if [ ! -d "$HOME/storage/shared" ]; then
-    echo "Requesting Android storage permission..."
-    termux-setup-storage
+termux-setup-storage
 
-    echo "Waiting for storage permission..."
-
-    for i in {1..30}; do
-        [ -d "$HOME/storage/shared" ] && break
-        sleep 1
-    done
-fi
-
-if [ -d "$HOME/storage/shared" ]; then
-    echo "Android storage access confirmed."
-else
-    echo "WARNING: Storage permission not granted."
-    echo "Please grant storage permission in Android settings."
-fi
+echo "Storage setup command completed."
 
 # 3. Install Ubuntu
 echo "[3/7] Checking Ubuntu..."
