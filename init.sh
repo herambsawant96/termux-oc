@@ -45,7 +45,7 @@ apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl wget git ca-certificates
 
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://opencode.ai/v2/install | bash
 
 export PATH="/root/.opencode/bin:/root/.local/bin:$PATH"
 
